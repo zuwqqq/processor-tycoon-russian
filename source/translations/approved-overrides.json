@@ -7,15 +7,27 @@
   },
   {
     "file": "code.json",
-    "source": "Industries",
-    "previous": "Отрасли",
-    "replacement": "Промышленность"
+    "source": "High End",
+    "previous": "Премиум",
+    "replacement": "Высший сегмент"
   },
   {
     "file": "code.json",
-    "source": "Unit Cost",
-    "previous": "Себестоимость единицы",
-    "replacement": "Себестоимость"
+    "source": "Mid Range",
+    "previous": "Средний",
+    "replacement": "Средний сегмент"
+  },
+  {
+    "file": "code.json",
+    "source": "Low End",
+    "previous": "Бюджетный",
+    "replacement": "Бюджетный сегмент"
+  },
+  {
+    "file": "code.json",
+    "source": "Industries",
+    "previous": "Отрасли",
+    "replacement": "Промышленность"
   },
   {
     "file": "code.json",
@@ -28,6 +40,12 @@
     "source": "Research",
     "previous": "Исследовать",
     "replacement": "Исследование"
+  },
+  {
+    "file": "code.json",
+    "source": "Retire",
+    "previous": "Снять с пр-ва",
+    "replacement": "Снять с производства"
   },
   {
     "file": "code.json",
@@ -93,7 +111,7 @@
     "file": "extra.json",
     "source": "Competitive",
     "previous": "Конкурентоспособные",
-    "replacement": "На уровне рынка"
+    "replacement": "Рыночный"
   },
   {
     "file": "extra.json",
@@ -106,12 +124,6 @@
     "source": "Research Speed:",
     "previous": "Скорость исследований:",
     "replacement": "Исследования:"
-  },
-  {
-    "file": "extra.json",
-    "source": "Show execution times",
-    "previous": "Показывать время выполнения",
-    "replacement": "Время расчётов"
   },
   {
     "file": "extra.json",

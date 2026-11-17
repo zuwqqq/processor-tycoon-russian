@@ -1,119 +1,482 @@
 [
-  {"pattern":"^We grossed (.+) at the year of (\\d{4}), (.+) more than the previous year\\. Our expenses increased to (.+)\\. ([\\s\\S]+)$","replacement":"Наша выручка за $2 год составила $1 — на $3 больше, чем годом ранее. Наши расходы увеличились до $4. $5"},
-  {"pattern":"^We grossed (.+) at the year of (\\d{4}), (.+) less than the previous year\\. Our expenses increased to (.+)\\. ([\\s\\S]+)$","replacement":"Наша выручка за $2 год составила $1 — на $3 меньше, чем годом ранее. Наши расходы увеличились до $4. $5"},
-  {"pattern":"^We grossed (.+) at the year of (\\d{4}), (.+) more than the previous year\\. Our expenses decreased to (.+)\\. ([\\s\\S]+)$","replacement":"Наша выручка за $2 год составила $1 — на $3 больше, чем годом ранее. Наши расходы сократились до $4. $5"},
-  {"pattern":"^We grossed (.+) at the year of (\\d{4}), (.+) less than the previous year\\. Our expenses decreased to (.+)\\. ([\\s\\S]+)$","replacement":"Наша выручка за $2 год составила $1 — на $3 меньше, чем годом ранее. Наши расходы сократились до $4. $5"},
-  {"pattern":"^(.+) is looking for a CPU for their new computer\\. They need a performance of around (.+) and a power consumption lower than (.+)\\.\\n\\nThey need (.+) units per month, and are willing to pay (.+) per unit\\.$","replacement":"Компания $1 ищет процессор для нового компьютера. Нужна производительность около $2 и энергопотребление ниже $3.\n\nТребуется $4 шт. в месяц; компания готова платить $5 за единицу."},
-  {"pattern":"^(.+) is looking for a CPU for their new console\\. They need a performance of around (.+) and a power consumption lower than (.+)\\.\\n\\nThey need (.+) units per month, and are willing to pay (.+) per unit\\.$","replacement":"Компания $1 ищет процессор для новой консоли. Нужна производительность около $2 и энергопотребление ниже $3.\n\nТребуется $4 шт. в месяц; компания готова платить $5 за единицу."},
-  {"pattern":"^(.+) is looking for chips for their new calculator\\. They need a performance of around (.+) and a power consumption lower than (.+)\\.\\n\\nThey need (.+) units per month, and are willing to pay (.+) per unit\\.$","replacement":"Компания $1 ищет чипы для нового калькулятора. Нужна производительность около $2 и энергопотребление ниже $3.\n\nТребуется $4 шт. в месяц; компания готова платить $5 за единицу."},
-  {"pattern":"^We will share (\\d+) technolog(?:y|ies) with <style=Bold>(.+)</style>$","replacement":"Мы поделимся технологиями ($1) с компанией <style=Bold>$2</style>"},
-  {"pattern":"^We will share <style=Bold>(\\d+) technolog(?:y|ies)</style> with <style=Bold>(.+)</style>$","replacement":"Мы поделимся технологиями (<style=Bold>$1</style>) с компанией <style=Bold>$2</style>"},
-  {"pattern":"^Select a new manufacturer for your <style=Bold>(\\d+) CPUs?</style> that (?:is|are) still in production:$","replacement":"Выберите нового производителя для процессоров (<style=Bold>$1</style>), которые ещё выпускаются:"},
-  {"pattern":"^We don't have a <style=Bold>(Manufacturing Division|CPU Division)</style> to make use of this technology\\. Do you want to research it anyway\\?$","replacement":"У нас нет нужного <style=Bold>подразделения</style> для использования этой технологии. Всё равно исследовать её?"},
-  {"pattern":"^(.+) has just released the first ever <style=Bold>PGA</style> CPU\\. Due to its performance and ease of use, many customers are very willing to buy processors made with this package\\.$","replacement":"Компания $1 выпустила первый в мире процессор в корпусе <style=Bold>PGA</style>. Благодаря производительности и удобству многие покупатели охотно приобретают процессоры в таком корпусе."},
-  {"pattern":"^([0-9.,]+ MIPS) \\(Too Low\\)$","replacement":"$1 (слишком мало)"},
-  {"pattern":"^([0-9.,]+ W) \\(Too High\\)$","replacement":"$1 (слишком много)"},
-  {"pattern":"^((?:DIP|PLCC|PGA|LGA|BGA)(?: [0-9]+)?) \\(Wrong Type\\)$","replacement":"$1 (неподходящий тип)"},
-  {"pattern":"^(.+) went bankrupt!$","replacement":"Компания $1 обанкротилась!"},
-  {"pattern":"^Bankruptcy in (.+)$","replacement":"До банкротства: $1"},
-  {"pattern":"^(.+)'s Factory$","replacement":"Фабрика компании $1"},
-  {"pattern":"^Production: (.+)$","replacement":"Производство: $1"},
-  {"pattern":"^Remaining Cost: ([\\s\\S]+)$","replacement":"Оставшаяся стоимость: $1"},
-  {"pattern":"^Projects: (\\d+)$","replacement":"Проекты: $1"},
-  {"pattern":"^CPUs: (\\d+)$","replacement":"Процессоры: $1"},
-  {"pattern":"^Emails: (\\d+)$","replacement":"Письма: $1"},
-  {"pattern":"^Active Contracts: (\\d+)$","replacement":"Активные контракты: $1"},
-  {"pattern":"^Iterations: (\\d+)$","replacement":"Итерации: $1"},
-  {"pattern":"^Refinement (\\d+)$","replacement":"Улучшение $1"},
-  {"pattern":"^Refine \\((\\d+)/(\\d+)\\)$","replacement":"Улучшить ($1/$2)"},
-  {"pattern":"^Fully Refined \\((\\d+)/(\\d+)\\)$","replacement":"Полностью улучшен ($1/$2)"},
-  {"pattern":"^Socket (.+) created!$","replacement":"Сокет $1 создан!"},
-  {"pattern":"^Socket (.+) refined!$","replacement":"Сокет $1 улучшен!"},
-  {"pattern":"^Socket - (.+)$","replacement":"Сокет — $1"},
-  {"pattern":"^Socket \\((.+) Required\\)$","replacement":"Сокет (требуется $1)"},
-  {"pattern":"^(<color=#[A-Fa-f0-9]{6,8}>[^\\r\\n]+) \\(([^()]+) Required\\)</color>$","replacement":"$1 (требуется $2)</color>"},
-  {"pattern":"^You can now use <style=Bold>(.+)</style>!$","replacement":"Теперь доступно: <style=Bold>$1</style>!"},
-  {"pattern":"^(.+) has released a new CPU!$","replacement":"Компания $1 выпустила новый процессор!"},
-  {"pattern":"^(.+) has released a new Node!$","replacement":"Компания $1 представила новый техпроцесс!"},
-  {"pattern":"^(.+) signed a contract with (.+)!$","replacement":"Компания $1 подписала контракт с компанией $2!"},
-  {"pattern":"^Our contract with (.+) has expired!$","replacement":"Наш контракт с компанией $1 истёк!"},
-  {"pattern":"^(.+) became a fabless company!$","replacement":"Компания $1 перешла на работу без собственных фабрик!"},
-  {"pattern":"^(.+) has built their own fabs!$","replacement":"Компания $1 построила собственные фабрики!"},
-  {"pattern":"^(.+) now offers foundry services!$","replacement":"Компания $1 теперь предлагает услуги контрактного производства!"},
-  {"pattern":"^(.+) no longer offers foundry services!$","replacement":"Компания $1 больше не предлагает услуги контрактного производства!"},
-  {"pattern":"^(.+) shared (\\d+) technolog(?:y|ies) with us!$","replacement":"Компания $1 поделилась с нами технологиями: $2!"},
-  {"pattern":"^(Foundry Services|Wafer Supply Agreement), exclusive$","replacement":"Услуги контрактного производства, эксклюзивный"},
-  {"pattern":"^(Foundry Services|Wafer Supply Agreement), non-exclusive$","replacement":"Услуги контрактного производства, неэксклюзивный"},
-  {"pattern":"^(\\d+) technolog(?:y|ies)$","replacement":"Технологий: $1"},
-  {"pattern":"^Days since last save: ([0-9,.]+)$","replacement":"Дней с последнего сохранения: $1"},
-  {"pattern":"^Market Share: (.+)$","replacement":"Доля рынка: $1"},
-  {"pattern":"^Sell Division: (.+)$","replacement":"Продать подразделение: $1"},
-  {"pattern":"^Storage: (.+)$","replacement":"Запасы: $1"},
-  {"pattern":"^Fines from contracts: (.+)$","replacement":"Штрафы по контрактам: $1"},
-  {"pattern":"^Fines: (.+)$","replacement":"Штрафы: $1"},
-  {"pattern":"^Locked Until (\\d{4})$","replacement":"Недоступно до $1 года"},
-  {"pattern":"^Bottleneck: (.+) MIPS$","replacement":"Ограничение памяти: $1 MIPS"},
-  {"pattern":"^Cache Cost: (.+)$","replacement":"Стоимость кэша: $1"},
-  {"pattern":"^Cost: (.+)$","replacement":"Стоимость: $1"},
-  {"pattern":"^Time: (\\d+) days$","replacement":"Время: $1 дн."},
-  {"pattern":"^Die Size: (.+)$","replacement":"Площадь кристалла: $1"},
-  {"pattern":"^Cache Capacity: (.+)$","replacement":"Вместимость кэша: $1"},
-  {"pattern":"^Safe Temperature: (.+)$","replacement":"Безопасная температура: $1"},
-  {"pattern":"^Multiple Cores: Yes$","replacement":"Несколько ядер: да"},
-  {"pattern":"^Multiple Cores: No$","replacement":"Несколько ядер: нет"},
-  {"pattern":"^Wafer Cost: (.+)$","replacement":"Стоимость пластины: $1"},
-  {"pattern":"^Yield Rate: (.+)$","replacement":"Выход годных: $1"},
-  {"pattern":"^Transistor Density: (.+)$","replacement":"Плотность транзисторов: $1"},
-  {"pattern":"^Fees: (.+)% markup, (.+)% royalty$","replacement":"Плата: наценка $1%, роялти $2%"},
-  {"pattern":"^([0-9.,]+[KMBT]?) lines, ([0-9.,]+ mm)$","replacement":"Линий: $1, $2"},
-  {"pattern":"^([0-9.,]+[KMBT]?) lines? \\(([0-9.,]+)%\\)$","replacement":"Линий: $1 ($2%)"},
-  {"pattern":"^([0-9.,]+[KMBT]?)( \\(\\d+\\))? lines \\(([0-9.,]+[KMBT]?) wafers\\)$","replacement":"Линий: $1$2 (пластин: $3)"},
-  {"pattern":"^([0-9.,]+[KMBT]?) lines?, ([0-9.,]+) mm$","replacement":"Линий: $1, $2 мм"},
-  {"pattern":"^([0-9.,]+[KMBT]?) lines?$","replacement":"Линий: $1"},
-  {"pattern":"^(\\d+) pins$","replacement":"Контактов: $1"},
-  {"pattern":"^(\\d+) Cores$","replacement":"Ядер: $1"},
-  {"pattern":"^([0-9.,]+) days?$","replacement":"$1 дн."},
-  {"pattern":"^([0-9.,]+) Days$","replacement":"$1 дн."},
-  {"pattern":"^([0-9.,]+) years$","replacement":"$1 лет"},
-  {"pattern":"^([0-9.,]+) Years?$","replacement":"$1 г."},
-  {"pattern":"^(\\d+) Months?$","replacement":"$1 мес."},
-  {"pattern":"^([0-9.,]+[KMBT]?) units$","replacement":"$1 шт."},
-  {"pattern":"^([0-9.,]+) buildings?$","replacement":"Зданий: $1"},
-  {"pattern":"^([0-9.,]+) mm Wafer$","replacement":"Пластина $1 мм"},
-  {"pattern":"^They will accept \\((.+)\\)$","replacement":"Они согласятся ($1)"},
-  {"pattern":"^They will not accept \\((.+)\\)$","replacement":"Они не согласятся ($1)"},
-  {"pattern":"^Favorable price: (.+)$","replacement":"Выгодная цена: $1"},
-  {"pattern":"^Unfavorable price: (.+)$","replacement":"Невыгодная цена: $1"},
-  {"pattern":"^Promising too many lines: (.+)$","replacement":"Обещано слишком много линий: $1"},
-  {"pattern":"^Contract length: (.+)$","replacement":"Срок контракта: $1"},
-  {"pattern":"^Exclusivity: (.+)$","replacement":"Эксклюзивность: $1"},
-  {"pattern":"^Not interested: (.+)$","replacement":"Нет заинтересованности: $1"},
-  {"pattern":"^Production capacity: (.+)$","replacement":"Производственные мощности: $1"},
-  {"pattern":"^Signing would cause them to break a contract: (.+)$","replacement":"Подписание нарушит другой контракт: $1"},
-  {"pattern":"^We payed (<color=#[A-Fa-f0-9]+>.+</color>) in taxes\\.$","replacement":"Мы уплатили $1 налогов."},
-  {"pattern":"^Revenue Growth: (.+)$","replacement":"Рост выручки: $1"},
-  {"pattern":"^Profit Margin: (.+)$","replacement":"Рентабельность: $1"},
-  {"pattern":"^Profit: (.+)$","replacement":"Прибыль: $1"},
-  {"pattern":"^Package (<size=-4>\\(\\d+/\\d+\\)</size>)$","replacement":"Корпуса $1"},
-  {"pattern":"^Lithography (<size=-4>\\(\\d+/\\d+\\)</size>)$","replacement":"Литография $1"},
-  {"pattern":"^Memory (<size=-4>\\(\\d+/\\d+\\)</size>)$","replacement":"Память $1"},
-  {"pattern":"^Frequency (<size=-4>\\(\\d+/\\d+\\)</size>)$","replacement":"Частота $1"},
-  {"pattern":"^CacheSize (<size=-4>\\(\\d+/\\d+\\)</size>)$","replacement":"Объём кэша $1"},
-  {"pattern":"^WaferSize (<size=-4>\\(\\d+/\\d+\\)</size>)$","replacement":"Размер пластин $1"},
-  {"pattern":"^Multicore (<size=-4>\\(\\d+/\\d+\\)</size>)$","replacement":"Многоядерность $1"},
-  {"pattern":"^([0-9.µμnm]+) yield:$","replacement":"Выход годных ($1):"},
-  {"pattern":"^FY: (.+)$","replacement":"Выход годных: $1"},
-  {"pattern":"^Very bad \\(([0-9.,-]+)\\)$","replacement":"Очень плохо ($1)"},
-  {"pattern":"^Bad \\(([0-9.,-]+)\\)$","replacement":"Плохо ($1)"},
-  {"pattern":"^Normal \\(([0-9.,-]+)\\)$","replacement":"Нормально ($1)"},
-  {"pattern":"^Good \\(([0-9.,-]+)\\)$","replacement":"Хорошо ($1)"},
-  {"pattern":"^Very good \\(([0-9.,-]+)\\)$","replacement":"Очень хорошо ($1)"},
-  {"pattern":"^Very slow \\(([0-9.,-]+)\\)$","replacement":"Очень медленно ($1)"},
-  {"pattern":"^Slow \\(([0-9.,-]+)\\)$","replacement":"Медленно ($1)"},
-  {"pattern":"^Fast \\(([0-9.,-]+)\\)$","replacement":"Быстро ($1)"},
-  {"pattern":"^Very fast \\(([0-9.,-]+)\\)$","replacement":"Очень быстро ($1)"},
-  {"pattern":"^Outdated \\(([0-9.,-]+)\\)$","replacement":"Устаревшие ($1)"},
-  {"pattern":"^Behind \\(([0-9.,-]+)\\)$","replacement":"Отстающие ($1)"},
-  {"pattern":"^Permantly delete (<style=[^>]+>.+</style>)\\?$","replacement":"Удалить навсегда $1?"},
-  {"pattern":"^(<style=[^>]+>.+</style>) already exists and will be overwritten\\.$","replacement":"$1 уже существует и будет перезаписан."}
+  {
+    "pattern": "^We grossed (.+) at the year of (\\d{4}), (.+) more than the previous year\\. Our expenses increased to (.+)\\. ([\\s\\S]+)$",
+    "replacement": "Наша выручка за $2 год составила $1 — на $3 больше, чем годом ранее. Наши расходы увеличились до $4. $5"
+  },
+  {
+    "pattern": "^We grossed (.+) at the year of (\\d{4}), (.+) less than the previous year\\. Our expenses increased to (.+)\\. ([\\s\\S]+)$",
+    "replacement": "Наша выручка за $2 год составила $1 — на $3 меньше, чем годом ранее. Наши расходы увеличились до $4. $5"
+  },
+  {
+    "pattern": "^We grossed (.+) at the year of (\\d{4}), (.+) more than the previous year\\. Our expenses decreased to (.+)\\. ([\\s\\S]+)$",
+    "replacement": "Наша выручка за $2 год составила $1 — на $3 больше, чем годом ранее. Наши расходы сократились до $4. $5"
+  },
+  {
+    "pattern": "^We grossed (.+) at the year of (\\d{4}), (.+) less than the previous year\\. Our expenses decreased to (.+)\\. ([\\s\\S]+)$",
+    "replacement": "Наша выручка за $2 год составила $1 — на $3 меньше, чем годом ранее. Наши расходы сократились до $4. $5"
+  },
+  {
+    "pattern": "^(.+) is looking for a CPU for their new computer\\. They need a performance of around (.+) and a power consumption lower than (.+)\\.\\n\\nThey need (.+) units per month, and are willing to pay (.+) per unit\\.$",
+    "replacement": "Компания $1 ищет процессор для нового компьютера. Нужна производительность около $2 и энергопотребление ниже $3.\n\nТребуется $4 шт. в месяц; компания готова платить $5 за единицу."
+  },
+  {
+    "pattern": "^(.+) is looking for a CPU for their new console\\. They need a performance of around (.+) and a power consumption lower than (.+)\\.\\n\\nThey need (.+) units per month, and are willing to pay (.+) per unit\\.$",
+    "replacement": "Компания $1 ищет процессор для новой консоли. Нужна производительность около $2 и энергопотребление ниже $3.\n\nТребуется $4 шт. в месяц; компания готова платить $5 за единицу."
+  },
+  {
+    "pattern": "^(.+) is looking for chips for their new calculator\\. They need a performance of around (.+) and a power consumption lower than (.+)\\.\\n\\nThey need (.+) units per month, and are willing to pay (.+) per unit\\.$",
+    "replacement": "Компания $1 ищет чипы для нового калькулятора. Нужна производительность около $2 и энергопотребление ниже $3.\n\nТребуется $4 шт. в месяц; компания готова платить $5 за единицу."
+  },
+  {
+    "pattern": "^We will share (\\d+) technolog(?:y|ies) with <style=Bold>(.+)</style>$",
+    "replacement": "Мы поделимся технологиями ($1) с компанией <style=Bold>$2</style>"
+  },
+  {
+    "pattern": "^We will share <style=Bold>(\\d+) technolog(?:y|ies)</style> with <style=Bold>(.+)</style>$",
+    "replacement": "Мы поделимся технологиями (<style=Bold>$1</style>) с компанией <style=Bold>$2</style>"
+  },
+  {
+    "pattern": "^Select a new manufacturer for your <style=Bold>(\\d+) CPUs?</style> that (?:is|are) still in production:$",
+    "replacement": "Выберите нового производителя для процессоров (<style=Bold>$1</style>), которые ещё выпускаются:"
+  },
+  {
+    "pattern": "^We don't have a <style=Bold>(Manufacturing Division|CPU Division)</style> to make use of this technology\\. Do you want to research it anyway\\?$",
+    "replacement": "У нас нет нужного <style=Bold>подразделения</style> для использования этой технологии. Всё равно исследовать её?"
+  },
+  {
+    "pattern": "^(.+) has just released the first ever <style=Bold>PGA</style> CPU\\. Due to its performance and ease of use, many customers are very willing to buy processors made with this package\\.$",
+    "replacement": "Компания $1 выпустила первый в мире процессор в корпусе <style=Bold>PGA</style>. Благодаря производительности и удобству многие покупатели охотно приобретают процессоры в таком корпусе."
+  },
+  {
+    "pattern": "^([0-9.,]+ MIPS) \\(Too Low\\)$",
+    "replacement": "$1 (слишком мало)"
+  },
+  {
+    "pattern": "^([0-9.,]+ W) \\(Too High\\)$",
+    "replacement": "$1 (слишком много)"
+  },
+  {
+    "pattern": "^((?:DIP|PLCC|PGA|LGA|BGA)(?: [0-9]+)?) \\(Wrong Type\\)$",
+    "replacement": "$1 (неподходящий тип)"
+  },
+  {
+    "pattern": "^(.+) went bankrupt!$",
+    "replacement": "Компания $1 обанкротилась!"
+  },
+  {
+    "pattern": "^Bankruptcy in (.+)$",
+    "replacement": "До банкротства: $1"
+  },
+  {
+    "pattern": "^(.+)'s Factory$",
+    "replacement": "Фабрика компании $1"
+  },
+  {
+    "pattern": "^Production: (.+)$",
+    "replacement": "Производство: $1"
+  },
+  {
+    "pattern": "^Remaining Cost: ([\\s\\S]+)$",
+    "replacement": "Оставшаяся стоимость: $1"
+  },
+  {
+    "pattern": "^Projects: (\\d+)$",
+    "replacement": "Проекты: $1"
+  },
+  {
+    "pattern": "^CPUs: (\\d+)$",
+    "replacement": "Процессоры: $1"
+  },
+  {
+    "pattern": "^Emails: (\\d+)$",
+    "replacement": "Письма: $1"
+  },
+  {
+    "pattern": "^Active Contracts: (\\d+)$",
+    "replacement": "Активные контракты: $1"
+  },
+  {
+    "pattern": "^Iterations: (\\d+)$",
+    "replacement": "Итерации: $1"
+  },
+  {
+    "pattern": "^Refinement (\\d+)$",
+    "replacement": "Улучшение $1"
+  },
+  {
+    "pattern": "^Refine \\((\\d+)/(\\d+)\\)$",
+    "replacement": "Улучшить ($1/$2)"
+  },
+  {
+    "pattern": "^Fully Refined \\((\\d+)/(\\d+)\\)$",
+    "replacement": "Полностью улучшен ($1/$2)"
+  },
+  {
+    "pattern": "^Socket (.+) created!$",
+    "replacement": "Сокет $1 создан!"
+  },
+  {
+    "pattern": "^Socket (.+) refined!$",
+    "replacement": "Сокет $1 улучшен!"
+  },
+  {
+    "pattern": "^Socket - (.+)$",
+    "replacement": "Сокет — $1"
+  },
+  {
+    "pattern": "^Socket \\((.+) Required\\)$",
+    "replacement": "Сокет (требуется $1)"
+  },
+  {
+    "pattern": "^(<color=#[A-Fa-f0-9]{6,8}>[^\\r\\n]+) \\(([^()]+) Required\\)</color>$",
+    "replacement": "$1 (требуется $2)</color>"
+  },
+  {
+    "pattern": "^You can now use <style=Bold>(.+)</style>!$",
+    "replacement": "Теперь доступно: <style=Bold>$1</style>!"
+  },
+  {
+    "pattern": "^(.+) has released a new CPU!$",
+    "replacement": "Компания $1 выпустила новый процессор!"
+  },
+  {
+    "pattern": "^(.+) has released a new Node!$",
+    "replacement": "Компания $1 представила новый техпроцесс!"
+  },
+  {
+    "pattern": "^(.+) signed a contract with (.+)!$",
+    "replacement": "Компания $1 подписала контракт с компанией $2!"
+  },
+  {
+    "pattern": "^Our contract with (.+) has expired!$",
+    "replacement": "Наш контракт с компанией $1 истёк!"
+  },
+  {
+    "pattern": "^(.+) became a fabless company!$",
+    "replacement": "Компания $1 перешла на работу без собственных фабрик!"
+  },
+  {
+    "pattern": "^(.+) has built their own fabs!$",
+    "replacement": "Компания $1 построила собственные фабрики!"
+  },
+  {
+    "pattern": "^(.+) now offers foundry services!$",
+    "replacement": "Компания $1 теперь предлагает услуги контрактного производства!"
+  },
+  {
+    "pattern": "^(.+) no longer offers foundry services!$",
+    "replacement": "Компания $1 больше не предлагает услуги контрактного производства!"
+  },
+  {
+    "pattern": "^(.+) shared (\\d+) technolog(?:y|ies) with us!$",
+    "replacement": "Компания $1 поделилась с нами технологиями: $2!"
+  },
+  {
+    "pattern": "^(Foundry Services|Wafer Supply Agreement), exclusive$",
+    "replacement": "Услуги контрактного производства, эксклюзивный"
+  },
+  {
+    "pattern": "^(Foundry Services|Wafer Supply Agreement), non-exclusive$",
+    "replacement": "Услуги контрактного производства, неэксклюзивный"
+  },
+  {
+    "pattern": "^(\\d+) technolog(?:y|ies)$",
+    "replacement": "Технологий: $1"
+  },
+  {
+    "pattern": "^Days since last save: ([0-9,.]+)$",
+    "replacement": "Дней с последнего сохранения: $1"
+  },
+  {
+    "pattern": "^Market Share: (.+)$",
+    "replacement": "Доля рынка: $1"
+  },
+  {
+    "pattern": "^Sell Division: (.+)$",
+    "replacement": "Продать подразделение: $1"
+  },
+  {
+    "pattern": "^Storage: (.+)$",
+    "replacement": "Запасы: $1"
+  },
+  {
+    "pattern": "^Fines from contracts: (.+)$",
+    "replacement": "Штрафы по контрактам: $1"
+  },
+  {
+    "pattern": "^Fines: (.+)$",
+    "replacement": "Штрафы: $1"
+  },
+  {
+    "pattern": "^Locked Until (\\d{4})$",
+    "replacement": "Недоступно до $1 года"
+  },
+  {
+    "pattern": "^Bottleneck: (.+) MIPS$",
+    "replacement": "Ограничение: $1 MIPS"
+  },
+  {
+    "pattern": "^Cache Cost: (.+)$",
+    "replacement": "Кэш: $1"
+  },
+  {
+    "pattern": "^Cost: (.+)$",
+    "replacement": "Цена: $1"
+  },
+  {
+    "pattern": "^Time: (\\d+) days$",
+    "replacement": "Время: $1 дн."
+  },
+  {
+    "pattern": "^Die Size: (.+)$",
+    "replacement": "Площадь кристалла: $1"
+  },
+  {
+    "pattern": "^Cache Capacity: (.+)$",
+    "replacement": "Вместимость кэша: $1"
+  },
+  {
+    "pattern": "^Safe Temperature: (.+)$",
+    "replacement": "Безопасная температура: $1"
+  },
+  {
+    "pattern": "^Multiple Cores: Yes$",
+    "replacement": "Несколько ядер: да"
+  },
+  {
+    "pattern": "^Multiple Cores: No$",
+    "replacement": "Несколько ядер: нет"
+  },
+  {
+    "pattern": "^Wafer Cost: (.+)$",
+    "replacement": "Пластина: $1"
+  },
+  {
+    "pattern": "^Yield Rate: (.+)$",
+    "replacement": "Выход: $1"
+  },
+  {
+    "pattern": "^Transistor Density: (.+)$",
+    "replacement": "Плотность транзисторов: $1"
+  },
+  {
+    "pattern": "\\A([^\\r\\n]+), Transistor Density: ([0-9.,]+[KMBT]?/mm²)\\z",
+    "replacement": "$1, Плотность транзисторов: $2"
+  },
+  {
+    "pattern": "\\ATime [lL]eft: ([0-9]+) days?\\z",
+    "replacement": "Осталось: $1 дн."
+  },
+  {
+    "pattern": "\\ATime [lL]eft: ([0-9.,]+) years\\z",
+    "replacement": "Осталось: $1 г."
+  },
+  {
+    "pattern": "^Fees: (.+)% markup, (.+)% royalty$",
+    "replacement": "Плата: наценка $1%, роялти $2%"
+  },
+  {
+    "pattern": "^([0-9.,]+[KMBT]?) lines, ([0-9.,]+ mm)$",
+    "replacement": "Линий: $1, $2"
+  },
+  {
+    "pattern": "^([0-9.,]+[KMBT]?) lines? \\(([0-9.,]+)%\\)$",
+    "replacement": "Линий: $1 ($2%)"
+  },
+  {
+    "pattern": "^([0-9.,]+[KMBT]?)( \\(\\d+\\))? lines \\(([0-9.,]+[KMBT]?) wafers\\)$",
+    "replacement": "Линий: $1$2 (пластин: $3)"
+  },
+  {
+    "pattern": "^([0-9.,]+[KMBT]?) lines?, ([0-9.,]+) mm$",
+    "replacement": "Линий: $1, $2 мм"
+  },
+  {
+    "pattern": "^([0-9.,]+[KMBT]?) lines?$",
+    "replacement": "Линий: $1"
+  },
+  {
+    "pattern": "^(\\d+) pins$",
+    "replacement": "Контактов: $1"
+  },
+  {
+    "pattern": "^(\\d+) Cores$",
+    "replacement": "Ядер: $1"
+  },
+  {
+    "pattern": "^([0-9.,]+) days?$",
+    "replacement": "$1 дн."
+  },
+  {
+    "pattern": "^([0-9.,]+) Days$",
+    "replacement": "$1 дн."
+  },
+  {
+    "pattern": "^([0-9.,]+) years$",
+    "replacement": "$1 лет"
+  },
+  {
+    "pattern": "^([0-9.,]+) Years?$",
+    "replacement": "$1 г."
+  },
+  {
+    "pattern": "^(\\d+) Months?$",
+    "replacement": "$1 мес."
+  },
+  {
+    "pattern": "^([0-9.,]+[KMBT]?) units$",
+    "replacement": "$1 шт."
+  },
+  {
+    "pattern": "^([0-9.,]+) buildings?$",
+    "replacement": "Зданий: $1"
+  },
+  {
+    "pattern": "^([0-9.,]+) mm Wafer$",
+    "replacement": "Пластина $1 мм"
+  },
+  {
+    "pattern": "^They will accept \\((.+)\\)$",
+    "replacement": "Они согласятся ($1)"
+  },
+  {
+    "pattern": "^They will not accept \\((.+)\\)$",
+    "replacement": "Они не согласятся ($1)"
+  },
+  {
+    "pattern": "^Favorable price: (.+)$",
+    "replacement": "Выгодная цена: $1"
+  },
+  {
+    "pattern": "^Unfavorable price: (.+)$",
+    "replacement": "Невыгодная цена: $1"
+  },
+  {
+    "pattern": "^Promising too many lines: (.+)$",
+    "replacement": "Обещано слишком много линий: $1"
+  },
+  {
+    "pattern": "^Contract length: (.+)$",
+    "replacement": "Срок: $1"
+  },
+  {
+    "pattern": "^Exclusivity: (.+)$",
+    "replacement": "Эксклюзивность: $1"
+  },
+  {
+    "pattern": "^Not interested: (.+)$",
+    "replacement": "Нет заинтересованности: $1"
+  },
+  {
+    "pattern": "^Production capacity: (.+)$",
+    "replacement": "Мощность: $1"
+  },
+  {
+    "pattern": "^Signing would cause them to break a contract: (.+)$",
+    "replacement": "Подписание нарушит другой контракт: $1"
+  },
+  {
+    "pattern": "^We payed (<color=#[A-Fa-f0-9]+>.+</color>) in taxes\\.$",
+    "replacement": "Мы уплатили $1 налогов."
+  },
+  {
+    "pattern": "^Revenue Growth: (.+)$",
+    "replacement": "Рост выручки: $1"
+  },
+  {
+    "pattern": "^Profit Margin: (.+)$",
+    "replacement": "Рентабельность: $1"
+  },
+  {
+    "pattern": "^Profit: (.+)$",
+    "replacement": "Прибыль: $1"
+  },
+  {
+    "pattern": "^Package (<size=-4>\\(\\d+/\\d+\\)</size>)$",
+    "replacement": "Корпуса $1"
+  },
+  {
+    "pattern": "^Lithography (<size=-4>\\(\\d+/\\d+\\)</size>)$",
+    "replacement": "Литография $1"
+  },
+  {
+    "pattern": "^Memory (<size=-4>\\(\\d+/\\d+\\)</size>)$",
+    "replacement": "Память $1"
+  },
+  {
+    "pattern": "^Frequency (<size=-4>\\(\\d+/\\d+\\)</size>)$",
+    "replacement": "Частота $1"
+  },
+  {
+    "pattern": "^CacheSize (<size=-4>\\(\\d+/\\d+\\)</size>)$",
+    "replacement": "Объём кэша $1"
+  },
+  {
+    "pattern": "^WaferSize (<size=-4>\\(\\d+/\\d+\\)</size>)$",
+    "replacement": "Размер пластин $1"
+  },
+  {
+    "pattern": "^Multicore (<size=-4>\\(\\d+/\\d+\\)</size>)$",
+    "replacement": "Многоядерность $1"
+  },
+  {
+    "pattern": "^([0-9.µμnm]+) yield:$",
+    "replacement": "Выход годных ($1):"
+  },
+  {
+    "pattern": "^FY: (.+)$",
+    "replacement": "Выход: $1"
+  },
+  {
+    "pattern": "^Very bad \\(([0-9.,-]+)\\)$",
+    "replacement": "Очень плохо ($1)"
+  },
+  {
+    "pattern": "^Bad \\(([0-9.,-]+)\\)$",
+    "replacement": "Плохо ($1)"
+  },
+  {
+    "pattern": "^Normal \\(([0-9.,-]+)\\)$",
+    "replacement": "Нормально ($1)"
+  },
+  {
+    "pattern": "^Good \\(([0-9.,-]+)\\)$",
+    "replacement": "Хорошо ($1)"
+  },
+  {
+    "pattern": "^Very good \\(([0-9.,-]+)\\)$",
+    "replacement": "Очень хорошо ($1)"
+  },
+  {
+    "pattern": "^Very slow \\(([0-9.,-]+)\\)$",
+    "replacement": "Очень медленно ($1)"
+  },
+  {
+    "pattern": "^Slow \\(([0-9.,-]+)\\)$",
+    "replacement": "Медленно ($1)"
+  },
+  {
+    "pattern": "^Fast \\(([0-9.,-]+)\\)$",
+    "replacement": "Быстро ($1)"
+  },
+  {
+    "pattern": "^Very fast \\(([0-9.,-]+)\\)$",
+    "replacement": "Очень быстро ($1)"
+  },
+  {
+    "pattern": "^Outdated \\(([0-9.,-]+)\\)$",
+    "replacement": "Устаревшие ($1)"
+  },
+  {
+    "pattern": "^Behind \\(([0-9.,-]+)\\)$",
+    "replacement": "Отстающие ($1)"
+  },
+  {
+    "pattern": "^Permantly delete (<style=[^>]+>.+</style>)\\?$",
+    "replacement": "Удалить навсегда $1?"
+  },
+  {
+    "pattern": "^(<style=[^>]+>.+</style>) already exists and will be overwritten\\.$",
+    "replacement": "$1 уже существует и будет перезаписан."
+  }
 ]

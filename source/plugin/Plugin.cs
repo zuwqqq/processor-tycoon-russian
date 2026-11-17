@@ -43,12 +43,14 @@ namespace ProcessorTycoonRussian
             readonly bool originalAuto;
             readonly TextWrappingModes originalWrapping;
             readonly bool nameOnly, legend;
+            readonly bool layoutTarget;
             bool layoutChanged, widthChanged;
             public DisplayProcessor(Plugin plugin, TMP_Text owner, ITextPreprocessor original)
             {
                 this.plugin = plugin; this.owner = owner; Original = original;
                 originalFontSize = owner.fontSize; originalMin = owner.fontSizeMin; originalMax = owner.fontSizeMax;
                 originalWidth = owner.rectTransform.rect.width; originalAuto = owner.enableAutoSizing; originalWrapping = owner.textWrappingMode;
+                layoutTarget = LayoutFixes.IsTarget(owner);
                 var objectName = owner.gameObject.name.ToLowerInvariant();
                 nameOnly = objectName.Contains("companyname") || objectName.Contains("foundername") || objectName.Contains("cpuname") || objectName.Contains("teamname") || objectName.Contains("productname");
                 foreach (var component in owner.GetComponentsInParent<MonoBehaviour>(true))
@@ -83,19 +85,21 @@ namespace ProcessorTycoonRussian
                 if (string.IsNullOrEmpty(original)) { RestoreLayout(); return original; }
                 try
                 {
-                    if (nameOnly) return original;
+                    if (nameOnly) { RestoreLayout(); return original; }
                     if (legend && original != "Revenues" && original != "Expenses" && original != "Potential Sales")
                     {
                         bool finance = false;
                         foreach (var parent in owner.GetComponentsInParent<MonoBehaviour>(true))
                             if (parent != null && (parent.GetType().FullName == "ProcessorTycoon.Desktop.Finance.FinanceGraphWindow" || parent.GetType().FullName == "ProcessorTycoon.Desktop.Production.ProductionGraphWindow")) finance = true;
-                        if (!finance) return original;
+                        if (!finance) { RestoreLayout(); return original; }
                     }
                     var translated = plugin.Translator.Translate(original);
                     bool mainMenu = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0 &&
                         (original == "New Game" || original == "Load Game" || original == "Settings" || original == "Credits" || original == "Quit");
                     bool shortLabel = translated != original && original.Length < 100 && !original.Contains("\n") && !original.Contains("\r");
-                    if (!mainMenu && (widthChanged || !shortLabel)) RestoreLayout();
+                    if (translated == original) RestoreLayout();
+                    bool applyLayout = mainMenu || layoutTarget;
+                    if (!applyLayout || (widthChanged || !shortLabel)) RestoreLayout();
                     if (mainMenu)
                     {
                         layoutChanged = true;
@@ -109,7 +113,7 @@ namespace ProcessorTycoonRussian
                             widthChanged = true;
                         }
                     }
-                    else if (shortLabel)
+                    else if (layoutTarget && shortLabel)
                     {
                         layoutChanged = true;
                         owner.textWrappingMode = originalWrapping;
