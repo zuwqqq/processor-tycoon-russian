@@ -1,10 +1,14 @@
+using System.Diagnostics;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ProcessorTycoon.Setup;
 
 internal static class Program
 {
+    internal const string CurrentVersion = UpdateChecker.CurrentVersion;
     [DllImport("kernel32.dll")] static extern bool AttachConsole(uint processId);
 
     [STAThread]
@@ -35,6 +39,9 @@ internal static class Program
         Application.Run(new InstallerForm());
         return 0;
     }
+
+    internal static Task<LatestRelease?> CheckLatestReleaseAsync(CancellationToken cancellationToken = default) =>
+        UpdateChecker.CheckLatestReleaseAsync(cancellationToken);
 }
 
 internal sealed class InstallerForm : Form
@@ -74,6 +81,7 @@ internal sealed class InstallerForm : Form
         layout.Controls.Add(actions);
         layout.Controls.Add(status);
         Controls.Add(layout);
+        Shown += async (_, _) => await CheckForUpdatesAsync();
         browse.Click += (_, _) =>
         {
             using var dialog = new FolderBrowserDialog { Description = "Выберите папку Processor Tycoon", InitialDirectory = folder.Text, UseDescriptionForTitle = true };
@@ -81,6 +89,21 @@ internal sealed class InstallerForm : Form
         };
         install.Click += async (_, _) => await RunOperation("--install");
         uninstall.Click += async (_, _) => await RunOperation("--uninstall");
+    }
+
+    async Task CheckForUpdatesAsync()
+    {
+        try
+        {
+            var latest = await Program.CheckLatestReleaseAsync();
+            if (IsDisposed || Disposing || latest == null || !UpdateChecker.IsNewer(latest.TagName)) return;
+            var result = MessageBox.Show(this,
+                $"Доступна новая версия русификатора: {latest.TagName}.\n\nУстановлена версия: {Program.CurrentVersion}.\n\nОткрыть страницу новой версии?",
+                "Доступно обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes && !IsDisposed)
+                Process.Start(new ProcessStartInfo(UpdateChecker.ReleasePage) { UseShellExecute = true });
+        }
+        catch (Exception) { }
     }
 
     async Task RunOperation(string operation)
