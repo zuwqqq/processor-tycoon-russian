@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net472</TargetFramework><LangVersion>latest</LangVersion><AssemblyName>ProcessorTycoon.Russian</AssemblyName><Nullable>disable</Nullable><CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies><GameDir>C:\Users\zxcursed\Desktop\Processor Tycoon</GameDir></PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BepInEx"><HintPath>../bepinex-reference/BepInEx/core/BepInEx.dll</HintPath></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(GameDir)/Processor Tycoon_Data/Managed/UnityEngine.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(GameDir)/Processor Tycoon_Data/Managed/UnityEngine.CoreModule.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.UI"><HintPath>$(GameDir)/Processor Tycoon_Data/Managed/UnityEngine.UI.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.TextRenderingModule"><HintPath>$(GameDir)/Processor Tycoon_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath></Reference>
+    <Reference Include="Unity.TextMeshPro"><HintPath>$(GameDir)/Processor Tycoon_Data/Managed/Unity.TextMeshPro.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.ImageConversionModule"><HintPath>$(GameDir)/Processor Tycoon_Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.InputLegacyModule"><HintPath>$(GameDir)/Processor Tycoon_Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule"><HintPath>$(GameDir)/Processor Tycoon_Data/Managed/UnityEngine.ScreenCaptureModule.dll</HintPath></Reference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+</Project>

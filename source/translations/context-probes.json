@@ -1,0 +1,19 @@
+[
+  {"source":"Наша выручка за 2000 год составила <color=#00FF00>$100K</color> — на <color=#00FF00>+$10K</color> больше, чем годом ранее. Наши расходы увеличились до <color=#FF0000>$50K</color>. We payed <color=#FF0000>$5K</color> in taxes.\n\nProfit: <color=#00FF00>$45K</color>\n\nRevenue Growth: <color=#00FF00>+10%</color>\nProfit Margin: <color=#00FF00>45%</color>","expected":"Наша выручка за 2000 год составила <color=#00FF00>$100K</color> — на <color=#00FF00>+$10K</color> больше, чем годом ранее. Наши расходы увеличились до <color=#FF0000>$50K</color>. Мы уплатили <color=#FF0000>$5K</color> налогов.\n\nПрибыль: <color=#00FF00>$45K</color>\n\nРост выручки: <color=#00FF00>+10%</color>\nРентабельность: <color=#00FF00>45%</color>"},
+  {"source":"Наша выручка за 1975 год составила $0. We didn't pay any taxes.\r\n\r\nProfit: <color=#FF0000>-$5K</color>","expected":"Наша выручка за 1975 год составила $0. Мы не платили налоги.\r\n\r\nПрибыль: <color=#FF0000>-$5K</color>"},
+  {"source":"<style=Bold>Profit (Client)</style>\n- Foundry Services, until Jan 2000\n\n<style=Bold>John Smith (Provider)</style>\n- Foundry Services, until Dec 2010","expected":"<style=Bold>Profit (Клиент)</style>\n- Услуги контрактного производства, до Jan 2000\n\n<style=Bold>John Smith (Поставщик)</style>\n- Услуги контрактного производства, до Dec 2010"},
+  {"source":"<style=Bold>Inlet (Provider)</style>\r\n- Foundry Services, until Feb 2001","expected":"<style=Bold>Inlet (Поставщик)</style>\r\n- Услуги контрактного производства, до Feb 2001"},
+  {"source":"It's the percentage of <style=Bold>functional dies</style> on a wafer.\n\n7nm: 85% (<color=#00FF00>+1.50/m</color>)\n\n<color=#CCCCCC>Hiding</color> 2 <color=#CCCCCC>fully optimized nodes</color>","expected":"Доля <style=Bold>исправных кристаллов</style> на пластине.\n\n7nm: 85% (<color=#00FF00>+1.50/мес.</color>)\n\n<color=#CCCCCC>Скрыто</color> 2 <color=#CCCCCC>полностью оптимизированных техпроцессов</color>"},
+  {"source":"<color=#CCCCCCFF>Hiding</color> 1 <color=#CCCCCCFF>fully optimized node</color>","expected":"<color=#CCCCCCFF>Скрыто</color> 1 <color=#CCCCCCFF>полностью оптимизированных техпроцессов</color>"},
+  {"source":"Normal\nYield Rate: 50% -> 95%\nWafer Cost: $100K\nFees: 50% markup, 5% royalty\nTransistor Density: 1K/mm²\nCost: $2M\nTime: 100 days\n30 lines, 76 mm","expected":"Normal\nВыход годных: 50% -> 95%\nСтоимость пластины: $100K\nПлата: наценка 50%, роялти 5%\nПлотность транзисторов: 1K/mm²\nСтоимость: $2M\nВремя: 100 дн.\nЛиний: 30, 76 mm"},
+  {"source":"Cost: My Custom Name\r\nBottleneck: 100 MIPS\r\nCache Cost: $1\r\n\r\nCost: $500\r\nTime: 30 days\r\n","expected":"Cost: My Custom Name\r\nОграничение памяти: 100 MIPS\r\nСтоимость кэша: $1\r\n\r\nСтоимость: $500\r\nВремя: 30 дн.\r\n"},
+  {"source":"<color=#FF0000>2 MB (4 MB Required)</color>","expected":"<color=#FF0000>2 MB (требуется 4 MB)</color>"},
+  {"source":"Money already spent on this project won't be recovered. \n\nRemaining Cost: <style=Medium><color=#FF0000>$1M</color></style>","expected":"Деньги, уже потраченные на этот проект, не будут возвращены. \n\nОставшаяся стоимость: <style=Medium><color=#FF0000>$1M</color></style>"},
+  {"source":"John Smith","expected":"John Smith"},
+  {"source":"Normal","expected":"Normal"},
+  {"source":"Profit: My Custom CPU","expected":"Profit: My Custom CPU"},
+  {"source":"<style=Bold>John Smith (Client)</style>","expected":"<style=Bold>John Smith (Client)</style>"},
+  {"source":"We didn't pay any taxes.","expected":"We didn't pay any taxes."},
+  {"source":"7nm: 85%, Normal","expected":"7nm: 85%, Normal"},
+  {"source":"<link=\"Profit: John Smith\">John Smith</link>","expected":"<link=\"Profit: John Smith\">John Smith</link>"}
+]

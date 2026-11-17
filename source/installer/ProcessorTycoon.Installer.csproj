@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net11.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <AssemblyName>ProcessorTycoon-Russian-Setup</AssemblyName>
+    <PayloadPath Condition="'$(PayloadPath)' == ''">$(MSBuildProjectDirectory)/../dist/payload.zip</PayloadPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(PayloadPath)" LogicalName="payload.zip" Condition="Exists('$(PayloadPath)')" />
+  </ItemGroup>
+  <Target Name="RequirePayloadForPublish" BeforeTargets="PrepareForPublish">
+    <Error Condition="!Exists('$(PayloadPath)')" Text="Prepare dist/payload.zip before publishing (or set PayloadPath)." />
+  </Target>
+</Project>

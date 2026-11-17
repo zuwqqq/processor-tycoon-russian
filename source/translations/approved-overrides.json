@@ -1,0 +1,128 @@
+[
+  {
+    "file": "code.json",
+    "source": "Normal",
+    "previous": "Обычный",
+    "replacement": "Нормально"
+  },
+  {
+    "file": "code.json",
+    "source": "Industries",
+    "previous": "Отрасли",
+    "replacement": "Промышленность"
+  },
+  {
+    "file": "code.json",
+    "source": "Unit Cost",
+    "previous": "Себестоимость единицы",
+    "replacement": "Себестоимость"
+  },
+  {
+    "file": "code.json",
+    "source": "Net Worth",
+    "previous": "Чистые активы",
+    "replacement": "Стоимость компании"
+  },
+  {
+    "file": "code.json",
+    "source": "Research",
+    "previous": "Исследовать",
+    "replacement": "Исследование"
+  },
+  {
+    "file": "code.json",
+    "source": "Innovation Effort",
+    "previous": "Усилия по внедрению инноваций",
+    "replacement": "Интенсивность инноваций"
+  },
+  {
+    "file": "code.json",
+    "source": "External",
+    "previous": "Внешний",
+    "replacement": "Внешние"
+  },
+  {
+    "file": "code.json",
+    "source": "Small",
+    "previous": "Малый",
+    "replacement": "Маленький"
+  },
+  {
+    "file": "code.json",
+    "source": "#company shared #technologies with us!",
+    "previous": "Компания #company поделилась с нами технологиями: #technologies!",
+    "replacement": "#company поделилась с нами технологиями: #technologies!"
+  },
+  {
+    "file": "code.json",
+    "source": "We will share #technologies with #company",
+    "previous": "Мы поделимся технологиями #technologies с компанией #company",
+    "replacement": "Мы поделимся технологиями (#technologies) с компанией #company"
+  },
+  {
+    "file": "code.json",
+    "source": "Select a new manufacturer for your #cpus that #is_or_are still in production:",
+    "previous": "Выберите нового производителя: #cpus — #is_or_are всё ещё в производстве:",
+    "replacement": "Выберите нового производителя для процессоров (#cpus), которые ещё выпускаются (#is_or_are):"
+  },
+  {
+    "file": "code.json",
+    "source": "We don't have a <style=Bold>#division</style> to make use of this technology. Do you want to research it anyway?",
+    "previous": "У нас нет подразделения <style=Bold>#division</style>, которое могло бы использовать эту технологию. Всё равно исследовать её?",
+    "replacement": "У нас нет подразделения <style=Bold>#division</style>, необходимого для использования этой технологии. Всё равно исследовать её?"
+  },
+  {
+    "file": "code.json",
+    "source": "#company has just released the first ever <style=Bold>PGA</style> CPU. Due to its performance and ease of use, many customers are very willing to buy processors made with this package.",
+    "previous": "Компания #company только что выпустила первый в мире процессор в корпусе <style=Bold>PGA</style>. Благодаря его производительности и удобству использования многие клиенты охотно покупают процессоры в таком корпусе.",
+    "replacement": "#company только что выпустила первый в мире процессор в корпусе <style=Bold>PGA</style>. Благодаря его производительности и удобству использования многие покупатели охотно приобретают процессоры в таком корпусе."
+  },
+  {
+    "file": "extra.json",
+    "source": "English",
+    "previous": "Английский",
+    "replacement": "Русский"
+  },
+  {
+    "file": "extra.json",
+    "source": "Quit",
+    "previous": "Выйти",
+    "replacement": "Выход"
+  },
+  {
+    "file": "extra.json",
+    "source": "Competitive",
+    "previous": "Конкурентоспособные",
+    "replacement": "На уровне рынка"
+  },
+  {
+    "file": "extra.json",
+    "source": "Technology:",
+    "previous": "Технология:",
+    "replacement": "Технологии:"
+  },
+  {
+    "file": "extra.json",
+    "source": "Research Speed:",
+    "previous": "Скорость исследований:",
+    "replacement": "Исследования:"
+  },
+  {
+    "file": "extra.json",
+    "source": "Show execution times",
+    "previous": "Показывать время выполнения",
+    "replacement": "Время расчётов"
+  },
+  {
+    "file": "extra.json",
+    "source": "Spawn random competitors",
+    "previous": "Создавать случайных конкурентов",
+    "replacement": "Случайные конкуренты"
+  },
+  {
+    "file": "extra.json",
+    "source": "Normal",
+    "previous": "Нормально",
+    "replacement": "Обычный"
+  }
+]
