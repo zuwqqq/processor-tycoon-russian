@@ -421,7 +421,7 @@
   },
   {
     "pattern": "^([0-9.µμnm]+) yield:$",
-    "replacement": "Выход годных ($1):"
+    "replacement": "Выход ($1):"
   },
   {
     "pattern": "^FY: (.+)$",

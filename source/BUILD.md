@@ -6,6 +6,13 @@
 
 ```powershell
 dotnet run --project tests/Translator.Tests.csproj -- .
+dotnet run --project installer.tests/UpdateCheckerTests.csproj
+```
+
+Проверка реального ответа GitHub (требуется интернет):
+
+```powershell
+dotnet run --project installer.tests/UpdateCheckerTests.csproj -- --live
 ```
 
 Плагин: в `plugin/RussianMod.csproj` задайте `GameDir` на свою копию Processor Tycoon; ссылки BepInEx должны указывать на `bepinex-reference/BepInEx/core` рядом с папкой plugin. Затем:

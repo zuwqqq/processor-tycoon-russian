@@ -7,30 +7,6 @@
   },
   {
     "file": "code.json",
-    "source": "High End",
-    "previous": "Премиум",
-    "replacement": "Высший сегмент"
-  },
-  {
-    "file": "code.json",
-    "source": "Mid Range",
-    "previous": "Средний",
-    "replacement": "Средний сегмент"
-  },
-  {
-    "file": "code.json",
-    "source": "Low End",
-    "previous": "Бюджетный",
-    "replacement": "Бюджетный сегмент"
-  },
-  {
-    "file": "code.json",
-    "source": "Industries",
-    "previous": "Отрасли",
-    "replacement": "Промышленность"
-  },
-  {
-    "file": "code.json",
     "source": "Net Worth",
     "previous": "Чистые активы",
     "replacement": "Стоимость компании"
@@ -94,6 +70,18 @@
     "source": "#company has just released the first ever <style=Bold>PGA</style> CPU. Due to its performance and ease of use, many customers are very willing to buy processors made with this package.",
     "previous": "Компания #company только что выпустила первый в мире процессор в корпусе <style=Bold>PGA</style>. Благодаря его производительности и удобству использования многие клиенты охотно покупают процессоры в таком корпусе.",
     "replacement": "#company только что выпустила первый в мире процессор в корпусе <style=Bold>PGA</style>. Благодаря его производительности и удобству использования многие покупатели охотно приобретают процессоры в таком корпусе."
+  },
+  {
+    "file": "code.json",
+    "source": "Time left:",
+    "previous": "Осталось времени:",
+    "replacement": "Осталось:"
+  },
+  {
+    "file": "code.json",
+    "source": "Time Left:",
+    "previous": "Осталось времени:",
+    "replacement": "Осталось:"
   },
   {
     "file": "extra.json",

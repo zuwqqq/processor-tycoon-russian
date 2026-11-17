@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +21,27 @@ namespace ProcessorTycoonRussian
             "ProcessorTycoon.CompanySystem.Business.BusinessContractUI",
             "ProcessorTycoon.PopupSystem.Popup"
         };
+
+        internal static bool IsTabCaption(TMP_Text text)
+        {
+            const BindingFlags fields = BindingFlags.Instance | BindingFlags.NonPublic;
+            foreach (var component in text.GetComponentsInParent<MonoBehaviour>(true))
+            {
+                if (component == null) continue;
+                var type = component.GetType();
+                if (type.FullName != "ProcessorTycoon.UI.ButtonTabGroup") continue;
+                var variant = type.GetField("backgroundVariant", fields)?.GetValue(component)?.ToString();
+                if (variant != "Analysis" && variant != "FactoryManagement") continue;
+                var tabs = type.GetField("tabs", fields)?.GetValue(component) as IEnumerable;
+                if (tabs == null) continue;
+                foreach (var tab in tabs)
+                {
+                    var button = tab?.GetType().GetProperty("Button")?.GetValue(tab, null) as Component;
+                    if (button != null && text.transform.IsChildOf(button.transform)) return true;
+                }
+            }
+            return false;
+        }
 
         internal static bool IsTarget(TMP_Text text)
         {

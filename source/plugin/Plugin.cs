@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ProcessorTycoonRussian
 {
-    [BepInPlugin("ru.processortycoon.localization", "Processor Tycoon Russian", "1.0.0")]
+    [BepInPlugin("ru.processortycoon.localization", "Processor Tycoon Russian", "1.3.0")]
     public sealed class Plugin : BaseUnityPlugin
     {
         internal Translator Translator;
@@ -42,15 +42,22 @@ namespace ProcessorTycoonRussian
             readonly float originalFontSize, originalMin, originalMax, originalWidth;
             readonly bool originalAuto;
             readonly TextWrappingModes originalWrapping;
+            readonly VerticalAlignmentOptions originalVerticalAlignment;
+            readonly Vector2 originalPosition;
             readonly bool nameOnly, legend;
-            readonly bool layoutTarget;
-            bool layoutChanged, widthChanged;
+            readonly bool layoutTarget, tabCaption;
+            readonly SaveButtonLayout saveButtonLayout;
+            bool layoutChanged, widthChanged, positionChanged;
             public DisplayProcessor(Plugin plugin, TMP_Text owner, ITextPreprocessor original)
             {
                 this.plugin = plugin; this.owner = owner; Original = original;
                 originalFontSize = owner.fontSize; originalMin = owner.fontSizeMin; originalMax = owner.fontSizeMax;
                 originalWidth = owner.rectTransform.rect.width; originalAuto = owner.enableAutoSizing; originalWrapping = owner.textWrappingMode;
                 layoutTarget = LayoutFixes.IsTarget(owner);
+                tabCaption = LayoutFixes.IsTabCaption(owner);
+                originalVerticalAlignment = owner.verticalAlignment;
+                originalPosition = owner.rectTransform.anchoredPosition;
+                saveButtonLayout = SaveButtonLayout.Find(owner);
                 var objectName = owner.gameObject.name.ToLowerInvariant();
                 nameOnly = objectName.Contains("companyname") || objectName.Contains("foundername") || objectName.Contains("cpuname") || objectName.Contains("teamname") || objectName.Contains("productname");
                 foreach (var component in owner.GetComponentsInParent<MonoBehaviour>(true))
@@ -72,10 +79,14 @@ namespace ProcessorTycoonRussian
             }
             internal void RestoreLayout()
             {
+                saveButtonLayout?.Restore();
                 if (!layoutChanged) return;
                 owner.enableAutoSizing = originalAuto; owner.fontSize = originalFontSize;
                 owner.fontSizeMin = originalMin; owner.fontSizeMax = originalMax; owner.textWrappingMode = originalWrapping;
+                owner.verticalAlignment = originalVerticalAlignment;
                 if (widthChanged) owner.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalWidth);
+                if (positionChanged) owner.rectTransform.anchoredPosition = originalPosition;
+                positionChanged = false;
                 widthChanged = false;
                 layoutChanged = false;
             }
@@ -96,9 +107,13 @@ namespace ProcessorTycoonRussian
                     var translated = plugin.Translator.Translate(original);
                     bool mainMenu = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0 &&
                         (original == "New Game" || original == "Load Game" || original == "Settings" || original == "Credits" || original == "Quit");
+                    bool sortCaption = original == "Order by:" && translated != original;
+                    bool saveCaption = (original == "Save" || original == "Load") && translated != original && saveButtonLayout != null;
+                    if (!saveCaption) saveButtonLayout?.Restore();
                     bool shortLabel = translated != original && original.Length < 100 && !original.Contains("\n") && !original.Contains("\r");
+                    if (positionChanged && !sortCaption) RestoreLayout();
                     if (translated == original) RestoreLayout();
-                    bool applyLayout = mainMenu || layoutTarget;
+                    bool applyLayout = mainMenu || tabCaption || sortCaption || saveCaption || layoutTarget;
                     if (!applyLayout || (widthChanged || !shortLabel)) RestoreLayout();
                     if (mainMenu)
                     {
@@ -111,6 +126,21 @@ namespace ProcessorTycoonRussian
                         {
                             rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 320f);
                             widthChanged = true;
+                        }
+                    }
+                    else if ((tabCaption || sortCaption || saveCaption) && shortLabel)
+                    {
+                        layoutChanged = true;
+                        if (saveCaption) saveButtonLayout.Apply();
+                        owner.textWrappingMode = TextWrappingModes.NoWrap;
+                        owner.verticalAlignment = VerticalAlignmentOptions.Middle;
+                        owner.enableAutoSizing = true;
+                        owner.fontSizeMax = originalFontSize;
+                        owner.fontSizeMin = Math.Min(originalFontSize, 12f);
+                        if (sortCaption)
+                        {
+                            owner.rectTransform.anchoredPosition = originalPosition + Vector2.left * 6f;
+                            positionChanged = true;
                         }
                     }
                     else if (layoutTarget && shortLabel)
